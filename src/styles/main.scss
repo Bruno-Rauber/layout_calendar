@@ -6,13 +6,25 @@ html {
 }
 
 .calendar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 5px solid black;
   display: flex;
   flex-wrap: wrap;
   margin: 4px;
-  gap: 1px;
-  padding: 10px;
-  width: 800px;
+  width: variables.$tamanho;
+  min-height: 100vh;
+
+
+  &__day {
+    height: variables.$height-day;
+    width: variables.$width-day;
+    border: variables.$border-day;
+    transition: 0.5s;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size;
+  }
 
   @for $i from 1 through 31 {
     &__day:nth-child(#{$i})::before {
@@ -23,9 +35,9 @@ html {
       flex-direction: row;
       height: variables.$height-day;
       width: variables.$width-day;
-      font-size: variables.$font-number;
       border: variables.$border-day;
       content: '#{$i}';
+
     }
   }
 
@@ -37,10 +49,6 @@ html {
         }
       }
     }
-  }
-
-  &__day {
-    transition: 0.5s;
   }
 
   &__day:hover {
